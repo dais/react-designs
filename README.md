@@ -1,1 +1,1 @@
-# react-designs
+# react-components
