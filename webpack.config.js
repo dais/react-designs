@@ -2,6 +2,8 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const postcssPresetEnv = require('postcss-preset-env');
+const stylelint = require('stylelint');
 
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -28,6 +30,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              modules: true,
               modules: {
                 mode: 'local',
                 localIdentName: '[path][name]__[local]--[hash:base64:5]',
@@ -35,7 +38,23 @@ module.exports = {
               importLoaders: 1
             }
           },
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options: {
+              parser: 'postcss-scss',
+              ident: 'postcss',
+              plugins: () => [
+                stylelint(),
+                postcssPresetEnv({
+                  stage: 1,
+                  features: { 'nesting-rules': true },
+                  browsers: 'last 2 versions',
+                  // With "no-2009" value Autoprefixer will add prefixes only for final and IE 10 versions of specification
+                  autoprefixer: { flexbox: 'no-2009' }
+                })
+              ]
+            }
+          }
         ]
       },
       {
