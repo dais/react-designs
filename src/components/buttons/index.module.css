@@ -1,6 +1,24 @@
+@import "../../css/index.css";
+
 .root {
-  padding: 16px 8px;
+  position: relative;
+  background-color: transparent;
+  border: none;
   border-radius: 5px;
-  border: 1px solid blue;
-  color: blue;
+  outline: none;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primaryColor);
+  }
+
+  &:active {
+    background-color: green;
+  }
+
+  &:focus:not(:active) {
+    background-color: blue;
+  }
 }

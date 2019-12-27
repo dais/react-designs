@@ -24,14 +24,26 @@
   - functionは自作する、必須な物はそんなにないから。
 - dateはdate-fnsで
   - treee thaking効くし必要十分。
+# MEMO (2019/12/26)
+- global cssを作ろうと思ったが、差し込むところがないぜ。
+  - postcss-importを入れるしかないな。
+- postcssのparserはどうすればよいのか。。。決めきれない
+# MEMO(2019/12/27)
+- postcss-importは、デフォルトでは以下の２つしか対応していない
+  - node_modules/normarize.css/normarize.css
+  - node_modules/normarize.css/index.css
+- ressは、node_modules/ress/ress.cssなので無理
+- postcssのresolveを実装すれば対応できそう。デフォルトの実装を真似る。
+
 
 # TODO
-- typescriptの設定をつめる
-- eslintの設定をつめる
+- postcssのresolve対応
+- postcss-functions
+
+- sample実装続き
 - tree shakingに対応させたい
 - themeに対応させたい、context apiかな。
   - cssを変更しやすいようにしたいけど。
 - env対応
 - test code
-- sample実装続き
 - npmに公開する。ポートフォリ側の実装で読み込む
