@@ -42,11 +42,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: () => [
-                require('postcss-import')({
-                  plugins: [
-                    stylelint(),
-                  ],
-                }),
+                stylelint(),
                 postcssPresetEnv({
                   stage: 1,
                   features: { 'nesting-rules': true },

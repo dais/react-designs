@@ -1,4 +1,4 @@
-# MEMO (2019/12/15)
+# MEMO: 2019/12/15
 - reactでしょうよ。
   - reactのhook、hocなどは実装しやすい。
     - 関数型プログラミングが好きです。
@@ -24,20 +24,26 @@
   - functionは自作する、必須な物はそんなにないから。
 - dateはdate-fnsで
   - treee thaking効くし必要十分。
-# MEMO (2019/12/26)
+# MEMO: 2019/12/26
 - global cssを作ろうと思ったが、差し込むところがないぜ。
   - postcss-importを入れるしかないな。
 - postcssのparserはどうすればよいのか。。。決めきれない
-# MEMO(2019/12/27)
+# MEMO: 2019/12/27
 - postcss-importは、デフォルトでは以下の２つしか対応していない
   - node_modules/normarize.css/normarize.css
   - node_modules/normarize.css/index.css
 - ressは、node_modules/ress/ress.cssなので無理
 - postcssのresolveを実装すれば対応できそう。デフォルトの実装を真似る。
-
+# MEMO: 2019/12/28
+- reset.cssは、ressではなく、minireset.cssにした。
+  - postcss-importのresolveが面倒なので、やっぱやめた
+  - miniresetはその名の通り、最小構成でかつ更新も最近で古い実装がないから
+  - 最終的には自分でreset cssを作った方が良さそうだけど。
+- というか、postcss-importはいらんという結論になった
+  - css_modulesを使っていると、tsからcssを読み込むので、postcssでは対応できない？？？
+    - 必須ではないので、reset cssはnode_modulesからではなく、ファイルから読み込むようにした
 
 # TODO
-- postcssのresolve対応
 - postcss-functions
 
 - sample実装続き
