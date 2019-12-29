@@ -63,8 +63,8 @@ module.exports = {
           {
             loader: 'ts-loader',
             options: {
-              transpileOnly: true,
-              experimentalWatchApi: true,
+              // transpileOnly: true,
+              // experimentalWatchApi: true,
             }
           }
         ]

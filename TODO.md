@@ -42,6 +42,13 @@
 - というか、postcss-importはいらんという結論になった
   - css_modulesを使っていると、tsからcssを読み込むので、postcssでは対応できない？？？
     - 必須ではないので、reset cssはnode_modulesからではなく、ファイルから読み込むようにした
+# MEMO: 2019/12/29
+- moduleResolution: nodeの設定がなかったので、defaultのclassicになっていた
+- souce-map-loaderがインストールされていなかった。。。
+- node-nightlyを使ってdebug
+  - npx webpack --mode development が通るようにする。
+  - node-nightly --inspect-brk ./node_modules/webpack/bin/webpack.js --mode development
+  - chrome://inspect でstep実行
 
 # TODO
 - postcss-functions
