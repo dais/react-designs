@@ -1,8 +1,6 @@
 @import "../../css/index.css";
 
 .root {
-  @function color red;
-
   position: relative;
   background-color: transparent;
   border: none;
@@ -11,8 +9,7 @@
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-
-  color: var(--color);
+  color: randomColor();
 
   &:hover {
     background-color: var(--primaryColor);

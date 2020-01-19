@@ -1,6 +1,7 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "at-rule-no-unknown": [true, {"ignoreAtRules": ["function"]}]
+    "at-rule-no-unknown": [true, {"ignoreAtRules": ["function"]}],
+    "function-name-case": null
   }
 }

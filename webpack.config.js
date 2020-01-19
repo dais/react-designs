@@ -4,7 +4,7 @@ const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-web
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const postcssPresetEnv = require('postcss-preset-env');
 const stylelint = require('stylelint');
-const cssFunctions = require('./src/css/plugins/funcsion');
+const functions = require('postcss-functions');
 
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -43,8 +43,10 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: () => [
-                cssFunctions(),
                 stylelint(),
+                functions({
+                  glob: path.join(__dirname, 'src/css/functions', '*.js'),
+                }),
                 postcssPresetEnv({
                   stage: 1,
                   features: { 'nesting-rules': true },
