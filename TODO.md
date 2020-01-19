@@ -49,10 +49,13 @@
   - npx webpack --mode development が通るようにする。
   - node-nightly --inspect-brk ./node_modules/webpack/bin/webpack.js --mode development
   - chrome://inspect でstep実行
+# MEMO: 2020/1/19
+- postcssのcustom pluginを作成
+- 単純に、.storybook/webpackの存在忘れてて嵌っただけ。。。
+- 改めて、postcss-functionsを試したい。
 
 # TODO
-- postcss-functions
-
+- postcss-functionsを改めて検証
 - sample実装続き
 - tree shakingに対応させたい
 - themeに対応させたい、context apiかな。

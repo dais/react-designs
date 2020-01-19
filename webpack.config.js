@@ -4,6 +4,7 @@ const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-web
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const postcssPresetEnv = require('postcss-preset-env');
 const stylelint = require('stylelint');
+const cssFunctions = require('./src/css/plugins/funcsion');
 
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -42,6 +43,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: () => [
+                cssFunctions(),
                 stylelint(),
                 postcssPresetEnv({
                   stage: 1,
@@ -49,10 +51,10 @@ module.exports = {
                   browsers: 'last 2 versions',
                   // With "no-2009" value Autoprefixer will add prefixes only for final and IE 10 versions of specification
                   autoprefixer: { flexbox: 'no-2009' }
-                })
+                }),
               ]
             }
-          }
+          },
         ]
       },
       {
