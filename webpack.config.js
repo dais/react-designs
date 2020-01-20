@@ -5,6 +5,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const postcssPresetEnv = require('postcss-preset-env');
 const stylelint = require('stylelint');
 const functions = require('postcss-functions');
+const easyImport = require('postcss-easy-import');
 
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -43,7 +44,11 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: () => [
-                stylelint(),
+                easyImport({
+                  plugins: [
+                    stylelint(),
+                  ],
+                }),
                 functions({
                   glob: path.join(__dirname, 'src/css/functions', '*.js'),
                 }),
