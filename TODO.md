@@ -53,10 +53,19 @@
 - postcssのcustom pluginを作成
 - 単純に、.storybook/webpackの存在忘れてて嵌っただけ。。。
 - 改めて、postcss-functionsを試したい。
+# MEMO: 2020/1/20
+- postcss-functionsは動作した。けど、これはvalueだけだわ。selector作れない。
+- webpack.config.ts対応してみたけど、storybook様のwebpackがjsでないと動作しないからやめ。
+- postcss-mixinsではなく、自作する。mixinに寄せるよりかは、postcss-functionsのatmark版を作成する。
+  - @mixin args1 args2で対応。
+  - responseは、selector or decl list?
+# MEMO: 2020/1/24
+- mixin pluginを作成
+- fileから読み込む案は一旦、停止。それほどmixinの数が多くならないと予想されるため。
 
 # TODO
-- postcss-functionsを改めて検証
 - sample実装続き
+ - button, input, textarea, formItem, form, dialog, table, toastを最初に作成
 - tree shakingに対応させたい
 - themeに対応させたい、context apiかな。
   - cssを変更しやすいようにしたいけど。

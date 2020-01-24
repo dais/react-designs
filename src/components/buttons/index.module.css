@@ -9,7 +9,8 @@
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-  color: randomColor();
+
+  @mixin verticalAlign 80;
 
   &:hover {
     background-color: var(--primaryColor);
