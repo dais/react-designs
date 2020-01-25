@@ -1,4 +1,4 @@
-@import "../../css/index.css";
+@import "../../../css/index.css";
 
 .root {
   position: relative;
@@ -9,8 +9,6 @@
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-
-  @mixin verticalAlign 80;
 
   &:hover {
     background-color: var(--primaryColor);

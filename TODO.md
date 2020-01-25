@@ -70,5 +70,6 @@
 - themeに対応させたい、context apiかな。
   - cssを変更しやすいようにしたいけど。
 - env対応
+- font対応
 - test code
 - npmに公開する。ポートフォリ側の実装で読み込む
