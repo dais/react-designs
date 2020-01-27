@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url("/fonts/noto_sans_jp/NotoSansJP-Regular.otf") format("opentype");
+}
