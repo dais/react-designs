@@ -4,8 +4,42 @@ const toDeclNode = (cssObj) => Object.entries(cssObj).map(
   css => postcss.decl({ prop: css[0], value: css[1] })
 )
 
+const typographyTypes = {
+  xlarge: {
+    'font-size': '20px',
+    'font-weight': '600',
+    'font-family': "\'Noto Sans JP\', Roboto, sans-serif",
+    'letter-spacing': '0.2em',
+  },
+  large: {
+    'font-size': '18px',
+    'font-weight': '500',
+    'font-family': "\'Noto Sans JP\', Roboto, sans-serif",
+    'letter-spacing': '0.2em',
+  },
+  normal: {
+    'font-size': '16px',
+    'font-weight': '400',
+    'font-family': "\'Noto Sans JP\', Roboto, sans-serif",
+    'letter-spacing': '0.2em',
+  },
+  small: {
+    'font-size': '14px',
+    'font-weight': '300',
+    'font-family': "\'Noto Sans JP\', Roboto, sans-serif",
+    'letter-spacing': '0.2em',
+  },
+  xsmall: {
+    'font-size': '12px',
+    'font-weight': '200',
+    'font-family': "\'Noto Sans JP\', Roboto, sans-serif",
+    'letter-spacing': '0.2em',
+  },
+}
+
 // TODO: 数が増えたら外だしする。
 const mixins = {
+  typography: (type = 'normal') => toDeclNode(typographyTypes[type]),
   lineEllipsis: () => toDeclNode({
     'text-overflow': 'ellipsis',
     'white-space': 'nowrap',
@@ -57,7 +91,7 @@ module.exports = postcss.plugin('mixin', function(opts = {}) {
       const name = params.shift();
 
       if (name in mixins) {
-        const newNodes = (params.length !== 0) ? mixins[name].apply(this, params) : mixins[name]
+        const newNodes = (params.length !== 0) ? mixins[name].apply(this, params) : mixins[name]()
         node.after(newNodes)
       }
 

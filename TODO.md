@@ -62,14 +62,21 @@
 # MEMO: 2020/1/24
 - mixin pluginを作成
 - fileから読み込む案は一旦、停止。それほどmixinの数が多くならないと予想されるため。
+# MEMO: 2020/1/26
+- postcss-easy-importを入れた。cssの@importは並行して読み込めないようだ。
+- atomic design対応する事にした。
+# MEMO: 2020/1/28
+- web fonts対応、google fontsからRobotoとNoto Sans JPを入れた。
+- hwbを使おうとしたが、postcss-preset-envはまだhwb対応していない? featureにあるけど。。。
+  - postcss-color-hwbは、古い仕様のカンマ区切りだったりする。現状スペース区切り。
+  - とりあえずカンマ区切りを許容して対応する事にしたhwb使いたいから。
 
 # TODO
 - sample実装続き
  - button, input, textarea, formItem, form, dialog, table, toastを最初に作成
 - tree shakingに対応させたい
 - themeに対応させたい、context apiかな。
-  - cssを変更しやすいようにしたいけど。
+- animationの定義部分検討
 - env対応
-- font対応
 - test code
 - npmに公開する。ポートフォリ側の実装で読み込む

@@ -1,24 +1,25 @@
 @import "../../../css/index.css";
 
 .root {
+  @mixin typography;
+
   position: relative;
-  background-color: transparent;
+  display: inline-block;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--btn-border-radius);
   outline: none;
   text-decoration: none;
   text-align: center;
+  background-color: var(--btn-primary-bg);
+  box-shadow: var(--normal-shadow);
+  vertical-align: middle;
   cursor: pointer;
 
   &:hover {
-    background-color: var(--primaryColor);
+    background-color: var(--btn-primary-hover);
   }
 
   &:active {
-    background-color: green;
-  }
-
-  &:focus:not(:active) {
-    background-color: blue;
+    background-color: var(--btn-primary-active);
   }
 }
