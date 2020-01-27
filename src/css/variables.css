@@ -1,3 +1,77 @@
 :root {
-  --primaryColor: #59bb0c;
+  /*
+    hwa (色相(0は赤) 白(%) 黒(%) / 明度(% default 100%)) e.g. hwb(90, 0%, 0%, 0.5)
+    https://www.w3schools.com/colors/colors_converter.asp
+  */
+
+  /* primary color */
+  --color-primary: hwb(200, 30%, 0%);
+  --color-primary-light: hwb(200, 45%, 0%);
+  --color-primary-dark: hwb(200, 30%, 15%);
+  --color-primary-bg: hwb(200, 30%, 0%, 0.2);
+
+  /* secondary color */
+  --color-secondary: hwb(140, 30%, 0%);
+  --color-secondary-light: hwb(140, 45%, 0%);
+  --color-secondary-dark: hwb(140, 30%, 15%);
+  --color-secondary-bg: hwb(140, 30%, 0%, 0.2);
+
+  /* accent color */
+  --color-accent: hwb(20, 25%, 0%);
+  --color-accent-light: hwb(20, 40%, 0%);
+  --color-accent-dark: hwb(20, 25%, 15%);
+  --color-accent-bg: hwb(20, 25%, 0%, 0.2);
+
+  /* shades - generated using chroma.js */
+  --black-2: hwb(120, 20%, 90%);
+  --black-1: hwb(120, 30%, 80%);
+  --gray-7: hwb(120, 90%, 100%);
+  --gray-6: hwb(120, 90%, 85%);
+  --gray-5: hwb(120, 90%, 70%);
+  --gray-4: hwb(120, 90%, 55%);
+  --gray-3: hwb(120, 90%, 40%);
+  --gray-2: hwb(120, 90%, 25%);
+  --gray-1: hwb(120, 90%, 10%);
+  --white: #fff;
+
+  /* feedback */
+  --color-success: #88c459;
+  --color-error: #f5414f;
+  --color-warning: #ffd137;
+
+  /* typography */
+  --color-text: var(--black-1);
+  --color-text-heading: var(--black-2);
+  --color-text-subtle: var(--gray-6);
+  --color-link: var(--color-primary);
+  --color-link-visited: var(--color-primary-dark);
+  --color-mark: var(--color-accent-bg);
+  --color-blockquote-border: var(--gray-2);
+
+  /* border */
+  --color-border: var(--gray-2);
+
+  /* body */
+  --color-body: var(--white);
+
+  /* forms */
+  --form-element-border: var(--color-border);
+  --form-element-border-focus: var(--color-primary);
+  --form-element-border-error: var(--color-error);
+  --form-element-bg: var(--white);
+  --form-text-placeholder: var(--gray-4);
+
+  /* buttons */
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-hover: var(--color-primary-light);
+  --btn-primary-active: var(--color-primary-dark);
+  --btn-primary-label: var(--white);
+  --btn-border-radius: 5px;
+
+  /* icons */
+  --color-icon-primary: var(--gray-4);
+  --color-icon-secondary: inherit;
+
+  /* shadow */
+  --normal-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }

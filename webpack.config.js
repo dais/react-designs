@@ -6,6 +6,7 @@ const postcssPresetEnv = require('postcss-preset-env');
 const stylelint = require('stylelint');
 const functions = require('postcss-functions');
 const easyImport = require('postcss-easy-import');
+const colorHwb = require('postcss-color-hwb');
 const mixin = require('./src/css/plugins/mixin');
 
 module.exports = {
@@ -51,6 +52,7 @@ module.exports = {
                     stylelint(),
                   ],
                 }),
+                colorHwb(),
                 functions({
                   glob: path.join(__dirname, 'src/css/functions', '*.js'),
                 }),
