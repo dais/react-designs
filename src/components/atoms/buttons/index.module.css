@@ -5,15 +5,43 @@
 
   position: relative;
   display: inline-block;
+  padding: 0.5em 1.5em;
   border: none;
   border-radius: var(--btn-border-radius);
   outline: none;
   text-decoration: none;
   text-align: center;
+  color: var(--black-1);
   background-color: var(--btn-primary-bg);
   box-shadow: var(--normal-shadow);
   vertical-align: middle;
   cursor: pointer;
+
+  &.flat {
+    box-shadow: unset;
+  }
+
+  &.outline {
+    border: unset;
+    box-shadow: unset;
+    background-color: unset;
+
+    &:hover {
+      background-color: var(--btn-outline-hover);
+    }
+
+    &:disabled {
+      background-color: unset;
+      color: var(--gray-4);
+      cursor: default;
+    }
+  }
+
+  &.circle {
+    padding: 1em;
+    border-radius: 50%;
+    font: icon;
+  }
 
   &:hover {
     background-color: var(--btn-primary-hover);
@@ -21,5 +49,11 @@
 
   &:active {
     background-color: var(--btn-primary-active);
+  }
+
+  &:disabled {
+    color: var(--white);
+    background-color: var(--btn-primary-disabled);
+    cursor: default;
   }
 }

@@ -75,10 +75,15 @@
 # MEMO: 2020/2/1
 - storybook v5にmigration、addon.js, config.jsを廃止、main.js, preview.js, manager.jsに。 
 - storybookにpreview.htmlをつけてコンポーネントを中央寄せした。
+- sampleで作ったbuttonを正式版に修正
+- class名は文字列指定ではなく、cssをimportして、css.rootなどで定義する事。
+# MEMO: 2020/2/10
+- iconは除外。このコンポーネントには追加しない。
+
 
 # TODO
 - sample実装続き
- - button, input, textarea, formItem, form, dialog, table, toastを最初に作成
+ - input, textarea, formItem, form, dialog, table, toastを最初に作成
 - tree shakingに対応させたい
 - themeに対応させたい、context apiかな。
 - animationの定義部分検討

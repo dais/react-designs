@@ -34,7 +34,6 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
               modules: {
                 mode: 'local',
                 localIdentName: '[path][name]__[local]--[hash:base64:5]',
@@ -46,12 +45,12 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: () => [
-                mixin(),
                 easyImport({
                   plugins: [
                     stylelint(),
                   ],
                 }),
+                mixin(),
                 colorHwb(),
                 functions({
                   glob: path.join(__dirname, 'src/css/functions', '*.js'),
@@ -83,11 +82,13 @@ module.exports = {
         ]
       },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+      /*
       {
         enforce: "pre",
         test: /\.js$/,
         loader: "source-map-loader"
       },
+      */
     ]
   },
   plugins: [

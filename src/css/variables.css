@@ -65,7 +65,9 @@
   --btn-primary-bg: var(--color-primary);
   --btn-primary-hover: var(--color-primary-light);
   --btn-primary-active: var(--color-primary-dark);
+  --btn-primary-disabled: var(--gray-3);
   --btn-primary-label: var(--white);
+  --btn-outline-hover: var(--gray-1);
   --btn-border-radius: 5px;
 
   /* icons */
