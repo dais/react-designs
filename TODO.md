@@ -70,6 +70,11 @@
 - hwbを使おうとしたが、postcss-preset-envはまだhwb対応していない? featureにあるけど。。。
   - postcss-color-hwbは、古い仕様のカンマ区切りだったりする。現状スペース区切り。
   - とりあえずカンマ区切りを許容して対応する事にしたhwb使いたいから。
+# MEMO: 2020/1/29
+- classNamesをインストール
+# MEMO: 2020/2/1
+- storybook v5にmigration、addon.js, config.jsを廃止、main.js, preview.js, manager.jsに。 
+- storybookにpreview.htmlをつけてコンポーネントを中央寄せした。
 
 # TODO
 - sample実装続き
