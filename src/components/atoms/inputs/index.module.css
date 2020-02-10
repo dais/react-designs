@@ -1,0 +1,130 @@
+@import "../../../css/index.css";
+
+.root {
+  @mixin typography;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &.disabled {
+    color: var(--gray-3);
+    cursor: default;
+  }
+}
+
+.base {
+  position: relative;
+  margin-left: 1em;
+  border: 1px solid var(--form-element-border);
+  border-radius: 5px;
+  outline: none;
+}
+
+.wrapper {
+  composes: base;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+
+  & > input {
+    display: none;
+  }
+
+  &.radio {
+    border-radius: 50%;
+  }
+
+  &.disabled {
+    border: 1px solid var(--form-element-border-disabled);
+    background-color: var(--form-element-bg-disabled);
+    cursor: default;
+
+    & input {
+      cursor: default;
+    }
+  }
+
+  &.checkbox.checked {
+    border: 1px solid var(--form-element-border-active);
+    background-color: var(--form-element-border-active);
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 50%;
+      width: 30%;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      border-bottom: 1px solid var(--white);
+      border-right: 1px solid var(--white);
+      transform: rotate(30deg);
+    }
+  }
+
+  &.radio.checked::before {
+    content: '';
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: var(--black-2);
+    border-radius: 50%;
+  }
+}
+
+.input {
+  composes: base;
+  padding: 0.2em 0.5em;
+  line-height: 1.5;
+
+  &:focus {
+    border: 1px solid var(--form-element-border-focus);
+  }
+
+  &:disabled {
+    border: 1px solid var(--form-element-border-disabled);
+    background-color: var(--form-element-bg-disabled);
+    cursor: default;
+  }
+}
+
+.groups {
+  & > label {
+    margin-bottom: 0.5em;
+
+    &:last-child {
+      margin-bottom: unset;
+    }
+  }
+
+  &.horizontal {
+    display: flex;
+    align-items: center;
+
+    & > label {
+      margin-right: 2em;
+      margin-bottom: unset;
+
+      &:last-child {
+        margin-right: unset;
+      }
+    }
+  }
+}
+
+.file {
+  display: none;
+  margin-left: 1em;
+
+  & ~ span {
+    border-bottom: 1px solid var(--gray-5);
+  }
+}

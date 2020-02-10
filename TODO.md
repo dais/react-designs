@@ -79,14 +79,21 @@
 - class名は文字列指定ではなく、cssをimportして、css.rootなどで定義する事。
 # MEMO: 2020/2/10
 - iconは除外。このコンポーネントには追加しない。
-
+- input系のコンポーネントを作成した。validationまだ。
+- radioはradiogroup込みでatomとした。radio１つで動作しないため。
+- validationはformが食うような設計にしたいよ。
+- storybookのhot loaderがtimeoutしているようだ、修正する。
 
 # TODO
 - sample実装続き
- - input, textarea, formItem, form, dialog, table, toastを最初に作成
+ - textarea, formItem(error, validation), form
+ - dialog, table, toast
+- storybookのhot loaderがtimeoutしているようだ、修正する。
+- validator, validateの作成？
 - tree shakingに対応させたい
 - themeに対応させたい、context apiかな。
 - animationの定義部分検討
+- input fileのデザイン考える。
 - env対応
 - test code
 - npmに公開する。ポートフォリ側の実装で読み込む
