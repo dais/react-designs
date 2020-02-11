@@ -90,13 +90,15 @@
 
 # TODO
 - sample実装続き
- - select, formItem(error, validation), form
+ - formItem(error, validation), form
+ - validatorjsをformに
  - dialog, table, toast
 - storybookのhot loaderがtimeoutしているようだ、修正する。
-- validator, validateの作成？
 - tree shakingに対応させたい
 - themeに対応させたい、context apiかな。
 - animationの定義部分検討
+- select tagではない、select(pulldown)を自作する。
+- textareaにautoresize機能つける。
 - input fileのデザイン考える。
 - env対応
 - test code

@@ -1,4 +1,4 @@
-import React, { ReactNode, MouseEventHandler } from 'react'
+import React, { useMemo, ReactNode } from 'react'
 import css from './index.module.css'
 import classNames from 'classnames'
 
@@ -18,8 +18,12 @@ export type TextareaProps = {
   className?: string
   textareaClassName?: string
   value: string
+  error?: string
   children?: ReactNode
 } & Omit<BaseProps, 'value' | 'children'>;
+
+const limited = (length: number, min?: number, max?: number) =>
+  (min ? min > length : false) || (max ? max < length : false)
 
 export const Textarea: React.FC<TextareaProps> = ({
   className = '',
@@ -28,31 +32,34 @@ export const Textarea: React.FC<TextareaProps> = ({
   maxLength,
   minLength,
   disabled= false,
+  error = '',
   children = null,
   ...rest
-}) => (
-  <label className={classNames(css.root, className, { [css.disabled]: disabled })}>
-    {children}
-    <div className={css.wrapper}>
-      <BaseTextarea
-        {...rest}
-        className={textareaClassName}
-        value={value}
-        minLength={minLength}
-        maxLength={maxLength}
-        disabled={disabled}
-      />
-      {(minLength || maxLength) && (
-        <p className={classNames(css.limit, {
-          [css.error]: (minLength ? minLength > value.length : false)
-            || (maxLength ? maxLength > value.length : false),
-          [css.disabled]: disabled
-        })}>
-          {minLength && `${minLength} > `}
-          <span>{value.length}</span>
-          {maxLength && ` > ${maxLength}`}
-        </p>
-      )}
-    </div>
-  </label>
-)
+}) => {
+  const isLimited = useMemo(() => limited(value.length, minLength, maxLength), [value.length, minLength, maxLength])
+  return (
+    <label className={classNames(css.root, className, {[css.disabled]: disabled})}>
+      {children}
+      <div className={css.wrapper}>
+        <BaseTextarea
+          {...rest}
+          className={classNames(textareaClassName, { [css.error]: isLimited || error })}
+          value={value}
+          minLength={minLength}
+          maxLength={maxLength}
+          disabled={disabled}
+        />
+        {(minLength || maxLength) && (
+          <p className={classNames(css.limit, {
+            [css.error]: isLimited,
+            [css.disabled]: disabled
+          })}>
+            {minLength && `${minLength} > `}
+            <span>{value.length}</span>
+            {maxLength && ` > ${maxLength}`}
+          </p>
+        )}
+      </div>
+    </label>
+  )
+}

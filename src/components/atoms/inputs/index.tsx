@@ -3,9 +3,9 @@ import React, {
   useState,
   useCallback,
   ReactNode,
-  ChangeEventHandler,
   ChangeEvent,
-  MutableRefObject, Dispatch, SetStateAction
+  Dispatch,
+  SetStateAction
 } from 'react';
 import css from './index.module.css';
 import classNames from 'classnames';
@@ -23,9 +23,10 @@ const BaseInput: React.FC<BaseProps> = ({
 
 // Text or Email or Tel or Password
 export type TextFieldProps = {
-  type?: 'text' | 'email' | 'tel'  | 'password' | 'file'
+  type?: 'text' | 'email' | 'tel'  | 'password'
   className?: string
   inputClassName?: string
+  error?: string
 } & Omit<BaseProps, 'type'>
 
 export const TextField: React.FC<TextFieldProps> = ({
@@ -33,10 +34,11 @@ export const TextField: React.FC<TextFieldProps> = ({
   className = '',
   inputClassName = '',
   disabled = false,
+  error = '',
   children = null,
   ...rest
 }) => (
-  <label className={classNames(css.root, className, { [css.disabled]: disabled })}>
+  <label className={classNames(css.root, className, { [css.disabled]: disabled, [css.error]: error })}>
     { children }
     <BaseInput
       {...rest}
@@ -52,7 +54,7 @@ export type ToggleProps = {
   type: 'checkbox' | 'radio'
   className?: string
   inputClassName?: string
-  onChange?: ChangeEventHandler,
+  error?: string
 } & Omit<BaseProps, 'type'>
 
 export const ToggleField: React.FC<ToggleProps> = ({
@@ -62,10 +64,11 @@ export const ToggleField: React.FC<ToggleProps> = ({
   children = null,
   checked,
   disabled= false,
+  error = '',
   onChange = () => {},
   ...rest
 }) => (
-  <label className={classNames(css.root, className, { [css.disabled]: disabled })}>
+  <label className={classNames(css.root, className, { [css.disabled]: disabled, [css.error]: error })}>
     { children }
     <div className={classNames(css.wrapper, {
       [css.radio]: type === 'radio',
@@ -86,11 +89,13 @@ export const ToggleField: React.FC<ToggleProps> = ({
 );
 
 // RadioGroup
-type RadioProps = Omit<ToggleProps, 'name' | 'type'> & { label: ReactNode }
+type RadioProps = Omit<ToggleProps, 'name' | 'type' | 'disabled'> & { label: ReactNode }
 export type RadioGroupProps = {
   name: string,
   direction?: 'vertical' | 'horizontal'
   className?: string
+  disabled?: boolean
+  error?: string
   radios: RadioProps[]
   renderer?: (props: RadioProps) => ReactNode
 }
@@ -99,19 +104,28 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   name,
   direction = 'vertical',
   className = '',
+  disabled = false,
+  error = '',
   radios,
   renderer= (props) => props.label,
 }) => (
-  <div className={classNames(css.groups, className, { [css.horizontal]: direction === 'horizontal' })}>
+  <div className={classNames(
+    css.groups,
+    className,
+    {
+      [css.horizontal]: direction === 'horizontal',
+      [css.error]: error,
+      [css.disabled]: disabled,
+    }
+  )}>
     {radios.map((props, index) => (
-        <ToggleField key={index} name={name} type='radio' {...props}>
+        <ToggleField key={index} name={name} type='radio' disabled={disabled} {...props}>
           {useMemo(() => renderer(props), [radios[index], renderer])}
         </ToggleField>
       )
     )}
   </div>
 );
-
 
 // File
 export type FileFieldProps = {

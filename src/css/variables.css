@@ -63,6 +63,8 @@
   --form-element-bg: var(--white);
   --form-element-bg-disabled: var(--gray-1);
   --form-text-placeholder: var(--gray-4);
+  --form-text-disabled: var(--gray-3);
+  --form-text-error: var(--color-error);
 
   /* buttons */
   --btn-primary-bg: var(--color-primary);

@@ -37,6 +37,10 @@
   }
 }
 
+.error {
+  composes: form-error from '../../../css/composes.css';
+}
+
 .disabled {
   composes: form-disabled from '../../../css/composes.css';
 }

@@ -8,6 +8,7 @@ export const textarea = () => (
   <Textarea
     value={text('value', 'hoge')}
     disabled={boolean('disabled', false)}
+    error={text('error', '')}
     minLength={number('minLength', 10)}
     maxLength={number('maxLength', 100)}
     onChange={action('onChange')}

@@ -1,12 +1,14 @@
 import React from 'react'
-import { boolean, select } from '@storybook/addon-knobs'
+import { boolean, select, text as txt } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { TextField, ToggleField, RadioGroup, FileField } from './index'
 
 export default { title: 'atoms/inputs' }
 export const text = () => (
   <TextField
+    value={txt('value', '')}
     disabled={boolean('disabled', false)}
+    error={txt('error', '')}
     onChange={action('onChange')}
   >
     名前
@@ -16,7 +18,9 @@ export const text = () => (
 export const email = () => (
   <TextField
     type="email"
+    value={txt('value', '')}
     disabled={boolean('disabled', false)}
+    error={txt('error', '')}
     onChange={action('onChange')}
   >
     メールアドレス
@@ -26,7 +30,9 @@ export const email = () => (
 export const tel = () => (
   <TextField
     type="tel"
+    value={txt('value', '')}
     disabled={boolean('disabled', false)}
+    error={txt('error', '')}
     onChange={action('onChange')}
   >
     電話番号
@@ -36,7 +42,9 @@ export const tel = () => (
 export const password = () => (
   <TextField
     type="password"
+    value={txt('value', '')}
     disabled={boolean('disabled', false)}
+    error={txt('error', '')}
     onChange={action('onChange')}
   >
     パスワード
@@ -48,6 +56,7 @@ export const checkbox = () => (
     type='checkbox'
     checked={boolean('checked', false)}
     disabled={boolean('disabled', false)}
+    error={txt('error', '')}
     onChange={action('onChange')}
   >
     有効/無効
@@ -57,8 +66,10 @@ export const checkbox = () => (
 export const radioGroup = () => (
   <RadioGroup
     name="test"
+    error={txt('error', '')}
+    disabled={boolean('disabled', false)}
     direction={select('direction', ['vertical', 'horizontal'], 'vertical')}
-    radios={[{ label: '国語', checked: false }, { label: '数学', checked: true }]}
+    radios={[{ label: 'man', checked: boolean('man', false) }, { label: 'woman', checked: boolean('woman', true )}]}
   >
     選択
   </RadioGroup>
