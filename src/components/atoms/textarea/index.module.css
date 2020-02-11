@@ -1,0 +1,42 @@
+.root {
+  @mixin typography;
+
+  display: flex;
+
+  &:not(.disabled) {
+    cursor: pointer;
+  }
+}
+
+.textarea {
+  @mixin typography;
+
+  padding: 0.2em 0.5em;
+  border: 1px solid var(--form-element-border);
+  border-radius: 5px;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+
+  &:focus {
+    border: 1px solid var(--form-element-border-focus);
+  }
+}
+
+.wrapper {
+  margin-left: 1em;
+}
+
+.limit {
+  @mixin typography xsmall;
+
+  & > span {
+    @mixin typography;
+
+    text-decoration: underline;
+  }
+}
+
+.disabled {
+  composes: disabled from '../../../css/composes.css';
+}

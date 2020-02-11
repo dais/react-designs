@@ -1,0 +1,11 @@
+.disabled {
+  color: var(--gray-3);
+  cursor: default;
+
+  & textarea, & input {
+    color: var(--gray-3);
+    border: 1px solid var(--form-element-border-disabled);
+    background-color: var(--form-element-bg-disabled);
+    cursor: default;
+  }
+}

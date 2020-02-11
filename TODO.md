@@ -83,10 +83,14 @@
 - radioはradiogroup込みでatomとした。radio１つで動作しないため。
 - validationはformが食うような設計にしたいよ。
 - storybookのhot loaderがtimeoutしているようだ、修正する。
+# MEMO: 2020/2/11
+- textarea作った。
+- composeがextend的に使えそうなので、globalなcompose.cssファイルを作成した。
+- composeはclassの詳細度で、後に指定することができなさそう。必ず先になる？仕様かな。
 
 # TODO
 - sample実装続き
- - textarea, formItem(error, validation), form
+ - select, formItem(error, validation), form
  - dialog, table, toast
 - storybookのhot loaderがtimeoutしているようだ、修正する。
 - validator, validateの作成？
