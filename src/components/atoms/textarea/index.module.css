@@ -31,12 +31,12 @@
   @mixin typography xsmall;
 
   & > span {
-    @mixin typography;
+    @mixin typography small;
 
     text-decoration: underline;
   }
 }
 
 .disabled {
-  composes: disabled from '../../../css/composes.css';
+  composes: form-disabled from '../../../css/composes.css';
 }

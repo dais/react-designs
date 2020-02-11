@@ -1,4 +1,4 @@
-.disabled {
+.form-disabled {
   color: var(--gray-3);
   cursor: default;
 
