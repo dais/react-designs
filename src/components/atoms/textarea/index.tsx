@@ -1,12 +1,12 @@
 import React, { useMemo, ReactNode } from 'react'
 import classNames from 'classnames'
 import css from './index.module.css'
-import { EventType } from '../..'
+import { CustomChangeEventHandler } from '../..'
 
 type BaseProps = {
   className?: string
   children?: never
-  onChange?: (args: EventType) => void
+  onChange?: CustomChangeEventHandler
 } & Omit<JSX.IntrinsicElements['textarea'], 'children' | 'onChange'>
 
 const BaseTextarea: React.FC<BaseProps> = ({

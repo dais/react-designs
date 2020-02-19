@@ -4,15 +4,17 @@ import React, {
   useCallback,
   ReactNode,
   Dispatch,
-  SetStateAction
+  SetStateAction,
+  ChangeEvent,
+  ChangeEventHandler
 } from 'react';
 import classNames from 'classnames';
 import css from './index.module.css';
-import { EventType } from '../..'
+import { CustomChangeEventHandler } from '../..'
 
 type BaseProps = {
   className?: string
-  onChange?: (args: EventType) => void
+  onChange?: ChangeEventHandler<HTMLInputElement>
 } & Omit<JSX.IntrinsicElements['input'], 'onChange'>
 
 const BaseInput: React.FC<BaseProps> = ({
@@ -107,7 +109,7 @@ export const ToggleField: React.FC<ToggleFieldProps> = ({
 );
 
 // ToggleGroup, ToggleGroup
-type ToggleItemProps = Omit<ToggleFieldProps, 'name' | 'type' | 'disabled'> & { label: ReactNode }
+export type ToggleItemProps = Omit<ToggleFieldProps, 'name' | 'type' | 'disabled'> & { label: ReactNode }
 export type ToggleGroupProps = {
   name: string
   type?: 'checkbox' | 'radio'
@@ -119,6 +121,7 @@ export type ToggleGroupProps = {
   fixLabelWidth?: number
   items: ToggleItemProps[]
   renderer?: (props: ToggleItemProps) => ReactNode
+  onChange?: CustomChangeEventHandler
 }
 
 export const ToggleGroup: React.FC<ToggleGroupProps> = ({
@@ -128,10 +131,11 @@ export const ToggleGroup: React.FC<ToggleGroupProps> = ({
   className = '',
   disabled = false,
   error = '',
-  outline = false,
+  outline = true,
   fixLabelWidth,
   items,
   renderer= (props) => props.label,
+  onChange,
   children,
 }) => (
   <div
@@ -145,14 +149,28 @@ export const ToggleGroup: React.FC<ToggleGroupProps> = ({
       }
     )}
   >
-    {children && (
+    {outline && children && (
       <span className={css.label} style={{ width: fixLabelWidth != null ? `${fixLabelWidth}em` : undefined }}>
         { children }
       </span>
     )}
     <div className={classNames({ [css.outline]: outline })}>
       {items.map((props, index) => (
-        <ToggleField key={index} name={name} type={type} disabled={disabled} {...props}>
+        <ToggleField
+          {...props}
+          key={index}
+          name={name}
+          type={type}
+          disabled={disabled}
+          onChange={useCallback(event => {
+            const item = { ...items[index], ...event }
+            const newItems = [...items]
+            newItems.splice(index, 1, item)
+            if (onChange) {
+              onChange({ ...event, items: newItems })
+            }
+          }, [items])}
+        >
           {useMemo(() => renderer(props), [items[index], renderer])}
         </ToggleField>
       ))}
@@ -166,9 +184,10 @@ export type FileFieldProps = {
   inputClassName?: string
   error?: string // TODO: form対応のためerrorをつけたが、errorの想定がない。
   fixLabelWidth?: number
+  onChange?: CustomChangeEventHandler
 } & Omit<BaseProps, 'type'>
 
-const selectFile = (setFiles: Dispatch<SetStateAction<File[]>>) => ({ event }: EventType) => {
+const selectFile = (setFiles: Dispatch<SetStateAction<File[]>>, onChange?: CustomChangeEventHandler) => (event: ChangeEvent<HTMLInputElement>) => {
   const files = event.target.files
   if (files === null) return []
 
@@ -180,6 +199,7 @@ const selectFile = (setFiles: Dispatch<SetStateAction<File[]>>) => ({ event }: E
     }
   }
   setFiles(list);
+  if (onChange) { onChange({ event, value: event.target.value, files }) }
 }
 
 export const FileField: React.FC<FileFieldProps> = ({
@@ -189,6 +209,8 @@ export const FileField: React.FC<FileFieldProps> = ({
   children = null,
   error = '',
   fixLabelWidth,
+  onChange,
+  value, // INFO: valueは利用しないが、FileListが入ってしまうため、omitしないといけない。
   ...rest
 }) => {
   const [files, setFiles] = useState<File[]>([]);
@@ -202,7 +224,7 @@ export const FileField: React.FC<FileFieldProps> = ({
         {...rest}
         disabled={disabled}
         className={classNames(css.file, inputClassName)}
-        onChange={useCallback(selectFile(setFiles), [])}
+        onChange={useCallback(selectFile(setFiles, onChange), [onChange])}
         type="file"
       />
       <span>

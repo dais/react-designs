@@ -106,9 +106,7 @@
 }
 
 .outline {
-  padding: 1em 2em;
-  border: 1px solid var(--form-element-border);
-  border-radius: var(--form-border-radius);
+  composes: outline from '../../../css/composes.css';
 }
 
 .file {
