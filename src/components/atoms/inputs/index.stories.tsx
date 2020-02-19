@@ -1,7 +1,7 @@
 import React from 'react'
 import { boolean, select, text as txt } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
-import { TextField, ToggleField, RadioGroup, FileField } from './index'
+import { TextField, ToggleField, ToggleGroup, FileField } from './index'
 
 export default { title: 'atoms/inputs' }
 export const text = () => (
@@ -64,15 +64,30 @@ export const checkbox = () => (
 );
 
 export const radioGroup = () => (
-  <RadioGroup
+  <ToggleGroup
     name="test"
     error={txt('error', '')}
     disabled={boolean('disabled', false)}
+    outline={boolean('outline', false)}
     direction={select('direction', ['vertical', 'horizontal'], 'vertical')}
-    radios={[{ label: 'man', checked: boolean('man', false) }, { label: 'woman', checked: boolean('woman', true )}]}
+    items={[{ label: 'man', checked: boolean('man', false) }, { label: 'woman', checked: boolean('woman', true )}]}
   >
-    選択
-  </RadioGroup>
+    性別
+  </ToggleGroup>
+);
+
+export const checkboxGroup = () => (
+  <ToggleGroup
+    name="test"
+    type="checkbox"
+    error={txt('error', '')}
+    disabled={boolean('disabled', false)}
+    outline={boolean('outline', false)}
+    direction={select('direction', ['vertical', 'horizontal'], 'vertical')}
+    items={[{ label: 'music', checked: boolean('music', false) }, { label: 'sports', checked: boolean('sports', true )}]}
+  >
+    趣味
+  </ToggleGroup>
 );
 
 export const file = () => (

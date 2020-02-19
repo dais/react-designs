@@ -50,6 +50,7 @@
 
   /* border */
   --color-border: var(--gray-2);
+  --radius-border: 5px;
 
   /* body */
   --color-body: var(--white);
@@ -65,6 +66,7 @@
   --form-text-placeholder: var(--gray-4);
   --form-text-disabled: var(--gray-3);
   --form-text-error: var(--color-error);
+  --form-border-radius: var(--radius-border);
 
   /* buttons */
   --btn-primary-bg: var(--color-primary);
@@ -73,7 +75,7 @@
   --btn-primary-disabled: var(--gray-3);
   --btn-primary-label: var(--white);
   --btn-outline-hover: var(--gray-1);
-  --btn-border-radius: 5px;
+  --btn-border-radius: var(--radius-border);
 
   /* icons */
   --color-icon-primary: var(--gray-4);

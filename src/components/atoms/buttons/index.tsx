@@ -8,7 +8,7 @@ type BaseProps = {
   className?: string,
   type?: buttonTypes,
   disabled?: boolean,
-  onClick: MouseEventHandler
+  onClick: MouseEventHandler<HTMLButtonElement>
 }
 
 const BaseButton: React.FC<BaseProps> = ({

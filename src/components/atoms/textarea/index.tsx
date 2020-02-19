@@ -1,24 +1,34 @@
 import React, { useMemo, ReactNode } from 'react'
-import css from './index.module.css'
 import classNames from 'classnames'
+import css from './index.module.css'
+import { EventType } from '../..'
 
 type BaseProps = {
   className?: string
   children?: never
-} & Omit<JSX.IntrinsicElements['textarea'], 'children'>
+  onChange?: (args: EventType) => void
+} & Omit<JSX.IntrinsicElements['textarea'], 'children' | 'onChange'>
 
 const BaseTextarea: React.FC<BaseProps> = ({
   className = '',
   ...rest
 }) => (
-  <textarea className={classNames(css.textarea, className)} {...rest} />
+  <textarea
+    {...rest}
+    className={classNames(css.textarea, className)}
+    onChange={(event) => ({
+      value: event.target.value,
+      event
+    })}
+  />
 );
 
 export type TextareaProps = {
   className?: string
   textareaClassName?: string
-  value: string
+  value?: string
   error?: string
+  fixLabelWidth?: number
   children?: ReactNode
 } & Omit<BaseProps, 'value' | 'children'>;
 
@@ -33,13 +43,16 @@ export const Textarea: React.FC<TextareaProps> = ({
   minLength,
   disabled= false,
   error = '',
+  fixLabelWidth,
   children = null,
   ...rest
 }) => {
   const isLimited = useMemo(() => limited(value.length, minLength, maxLength), [value.length, minLength, maxLength])
   return (
     <label className={classNames(css.root, className, {[css.disabled]: disabled})}>
-      {children}
+      <span className={css.label} style={{ width: fixLabelWidth != null ? `${fixLabelWidth}em` : undefined }}>
+        { children }
+      </span>
       <div className={css.wrapper}>
         <BaseTextarea
           {...rest}

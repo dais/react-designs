@@ -11,10 +11,13 @@
 
 .base {
   position: relative;
-  margin-left: 1em;
   border: 1px solid var(--form-element-border);
   border-radius: 5px;
   outline: none;
+}
+
+.label {
+  margin-right: 1em;
 }
 
 .wrapper {
@@ -77,6 +80,8 @@
 }
 
 .groups {
+  display: inline-flex;
+
   & > label {
     margin-bottom: 0.5em;
 
@@ -100,9 +105,14 @@
   }
 }
 
+.outline {
+  padding: 1em 2em;
+  border: 1px solid var(--form-element-border);
+  border-radius: var(--form-border-radius);
+}
+
 .file {
   display: none;
-  margin-left: 1em;
 
   & ~ span {
     border-bottom: 1px solid var(--gray-5);
