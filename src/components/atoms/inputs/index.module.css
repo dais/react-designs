@@ -30,8 +30,8 @@
     display: none;
   }
 
-  &.radio {
-    border-radius: 50%;
+  &.error {
+    border: 1px solid var(--form-element-border-error);
   }
 
   &.checkbox.checked {
@@ -54,18 +54,22 @@
     }
   }
 
-  &.radio.checked::before {
-    content: '';
-    position: absolute;
-    height: 80%;
-    width: 80%;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-    background-color: var(--black-2);
+  &.radio {
     border-radius: 50%;
+
+    &.checked::before {
+      content: '';
+      position: absolute;
+      height: 80%;
+      width: 80%;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      background-color: var(--black-2);
+      border-radius: 50%;
+    }
   }
 }
 
@@ -107,6 +111,10 @@
 
 .outline {
   composes: outline from '../../../css/composes.css';
+
+  &.error {
+    border: 1px solid var(--form-element-border-error);
+  }
 }
 
 .file {

@@ -49,14 +49,14 @@ export const Textarea: React.FC<TextareaProps> = ({
 }) => {
   const isLimited = useMemo(() => limited(value.length, minLength, maxLength), [value.length, minLength, maxLength])
   return (
-    <label className={classNames(css.root, className, {[css.disabled]: disabled})}>
+    <label className={classNames(css.root, className, { [css.disabled]: disabled, [css.error]: isLimited || error })}>
       <span className={css.label} style={{ width: fixLabelWidth != null ? `${fixLabelWidth}em` : undefined }}>
         { children }
       </span>
       <div className={css.wrapper}>
         <BaseTextarea
           {...rest}
-          className={classNames(textareaClassName, { [css.error]: isLimited || error })}
+          className={textareaClassName}
           value={value}
           minLength={minLength}
           maxLength={maxLength}

@@ -94,6 +94,7 @@ export const ToggleField: React.FC<ToggleFieldProps> = ({
         [css.radio]: type === 'radio',
         [css.checkbox]: type === 'checkbox',
         [css.checked]: checked,
+        [css.error]: error,
         [css.disabled]: disabled
       })}
     >
@@ -154,13 +155,14 @@ export const ToggleGroup: React.FC<ToggleGroupProps> = ({
         { children }
       </span>
     )}
-    <div className={classNames({ [css.outline]: outline })}>
+    <div className={classNames({ [css.outline]: outline, [css.error]: error })}>
       {items.map((props, index) => (
         <ToggleField
           {...props}
           key={index}
           name={name}
           type={type}
+          error={error}
           disabled={disabled}
           onChange={useCallback(event => {
             const item = { ...items[index], ...event }
