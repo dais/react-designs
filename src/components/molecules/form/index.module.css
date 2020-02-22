@@ -1,0 +1,33 @@
+.root {
+  @mixin typography;
+
+  position: relative;
+  background-color: var(--form-element-bg);
+}
+
+.outline {
+  composes: outline from '../../../css/composes.css';
+  padding: 2em 2em 1em;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  left: 1em;
+  padding: 0 1em;
+  transform: translateY(-50%);
+  border-radius: var(--form-border-radius);
+  background-color: var(--form-element-bg);
+}
+
+.wrapper {
+  & > * {
+    margin-bottom: 1em;
+  }
+}
+
+.action {
+  display: inline-flex;
+  width: 100%;
+  justify-content: flex-end;
+}

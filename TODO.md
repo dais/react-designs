@@ -73,7 +73,7 @@
 # MEMO: 2020/1/29
 - classNamesをインストール
 # MEMO: 2020/2/1
-- storybook v5にmigration、addon.js, config.jsを廃止、main.js, preview.js, manager.jsに。 
+- storybook v5にmigration、addon.js, config.jsを廃止、main.js, preview.js, manager.jsに。
 - storybookにpreview.htmlをつけてコンポーネントを中央寄せした。
 - sampleで作ったbuttonを正式版に修正
 - class名は文字列指定ではなく、cssをimportして、css.rootなどで定義する事。
@@ -87,19 +87,36 @@
 - textarea作った。
 - composeがextend的に使えそうなので、globalなcompose.cssファイルを作成した。
 - composeはclassの詳細度で、後に指定することができなさそう。必ず先になる？仕様かな。
+# MEMO: 2020/2/18
+- formを作成した。
+  - 残課題は、radio, checkbox groupの扱い, nested form, design, validation,
+  - groupsは、labelとは別にgroup labelを持つ、groupをborderで囲む(formのような)
+  - validationは、group単位？？？ checkbox, radioのvalidationを考える。
+  - customAttributesがあるよ。
+# MEMO: 2020/2/18
+  - onChange時に、eventの内容そのままではないようにemitした。
+# MEMO: 2020/2/21
+  - cssのclass名はcss modulesがobjectの形で詠み込まれるので、camelCaseにする事。stylelintに追加した。
+  - fieldsetは一部のブラウザ(chrome含む)でflex/gridが効かない
+  - formの残課題は、nested form, validation、この２つは後回し。一旦完了
 
 # TODO
-- sample実装続き
- - formItem(error, validation), form
- - validatorjsをformに
- - dialog, table, toast
+- table
 - storybookのhot loaderがtimeoutしているようだ、修正する。
+- tsdoc, typedoc(or DocFX), API Extractor対応
+- test code
+- env対応
+- githubのエラー対応、packageのupdate
+- sample実装続き
+ - dialog, toast
+- form validation,
+  - ajvが良さげだけどmessageがだめ、validator.jsで自作か？
+  - validatorjsは何故か動作しない？validatejsは更新されてない
+  - 自作する予定だが、あとでpackageにできるようにcodeをきれいに分割する事。
+- animationの定義部分検討
 - tree shakingに対応させたい
 - themeに対応させたい、context apiかな。
-- animationの定義部分検討
 - select tagではない、select(pulldown)を自作する。
 - textareaにautoresize機能つける。
 - input fileのデザイン考える。
-- env対応
-- test code
 - npmに公開する。ポートフォリ側の実装で読み込む
