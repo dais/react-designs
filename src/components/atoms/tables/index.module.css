@@ -1,0 +1,103 @@
+:root {
+  --padding: 2em;
+}
+
+.root {
+  @mixin typography;
+
+  width: 100%;
+  box-shadow: var(--normal-shadow);
+  border-radius: var(--table-border-radius);
+  text-align: left;
+  overflow: hidden;
+}
+
+.cell {
+  position: relative;
+  padding: 1em;
+  border-bottom: 1px solid var(--table-border);
+
+  &:first-child {
+    padding-left: var(--padding);
+    border-bottom: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: 0;
+      height: 1px;
+      width: calc(100% - var(--padding));
+      background-color: var(--table-border);
+    }
+  }
+
+  &:last-child {
+    padding-right: var(--padding);
+    border-bottom: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      height: 1px;
+      width: calc(100% - var(--padding));
+      background-color: var(--table-border);
+    }
+  }
+}
+
+.row {
+  padding: 1em 2em;
+
+  &:last-child .cell {
+    border: none;
+
+    &::before, &::after {
+      content: unset;
+    }
+  }
+}
+
+.header {
+  color: var(--table-header-color);
+  background-color: var(--table-header-bg);
+}
+
+.headerRow {
+  composes: row;
+}
+
+.headerCell {
+  composes: cell;
+}
+
+.content {
+  padding: 1em 2em;
+  color: var(--table-content-color);
+  background-color: var(--table-content-bg);
+}
+
+.contentRow {
+  composes: row;
+}
+
+.contentCell {
+  composes: cell;
+}
+
+.footer {
+  padding: 1em 2em;
+  color: var(--table-footer-color);
+  background-color: var(--table-footer-bg);
+}
+
+.footerRow {
+  composes: row;
+  border-top: 1px solid var(--table-border);
+}
+
+.footerCell {
+  composes: cell;
+}

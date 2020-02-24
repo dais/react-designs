@@ -99,9 +99,10 @@
   - cssのclass名はcss modulesがobjectの形で詠み込まれるので、camelCaseにする事。stylelintに追加した。
   - fieldsetは一部のブラウザ(chrome含む)でflex/gridが効かない
   - formの残課題は、nested form, validation、この２つは後回し。一旦完了
+# MEMO: 2020/2/23
+  - table componentを追加
 
 # TODO
-- table
 - storybookのhot loaderがtimeoutしているようだ、修正する。
 - tsdoc, typedoc(or DocFX), API Extractor対応
 - test code

@@ -77,6 +77,16 @@
   --btn-outline-hover: var(--gray-1);
   --btn-border-radius: var(--radius-border);
 
+  /* table */
+  --table-header-bg: var(--color-primary);
+  --table-content-bg: var(--white);
+  --table-footer-bg: var(--white);
+  --table-header-color: var(--white);
+  --table-content-color: var(--color-text);
+  --table-footer-color: var(--color-text);
+  --table-border: var(--color-border);
+  --table-border-radius: var(--radius-border);
+
   /* icons */
   --color-icon-primary: var(--gray-4);
   --color-icon-secondary: inherit;
