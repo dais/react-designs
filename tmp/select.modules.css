@@ -1,0 +1,72 @@
+@import '../../../styles';
+
+.root {
+  @include tg-body-2();
+
+  position: relative;
+}
+
+.root::before {
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid $black;
+  border-right: 6px solid transparent;
+  border-top: 6px solid transparent;
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 10px;
+  z-index: 2;
+}
+
+.root:hover::before {
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid $black;
+}
+
+.input {
+  background-color: $white;
+  border: solid 1px $gray-2;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  padding: 8px 32px 8px 12px;
+}
+
+.options {
+  background-color: $white;
+  box-shadow: $light-shadow;
+  display: none;
+  overflow-y: scroll;
+  padding: 4px;
+  position: absolute;
+  right: 0;
+  z-index: 5;
+}
+
+.option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  padding: 0 16px;
+}
+
+.option:hover {
+  background-color: $green-3;
+}
+
+.active {
+  background-color: $green-3;
+}
+
+.disabled {
+  background-color: $gray;
+  cursor: default;
+}
+
+.root:hover .options {
+  display: flex;
+  flex-direction: column;
+}
+
