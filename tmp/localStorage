@@ -1,0 +1,66 @@
+export const CHAT_MESSAGE_DRAFT = "CHAT_MESSAGE_DRAFT";
+
+const getAvailableStorage = (): Storage => {
+  try {
+    const storage = window.localStorage;
+    const x = "__storage_test__";
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return storage;
+  } catch (e) {
+    return {
+      store: {},
+      length: 0,
+      setItem(key: string, value: string) {
+        this.store[key] = value;
+        this.length += 1;
+      },
+      getItem(key: string) {
+        return this.store[key];
+      },
+      removeItem(key: string) {
+        delete this.store[key];
+        this.length -= 1;
+      },
+      clear() {
+        this.store = {};
+        this.length = 0;
+      },
+      key(index: number) {
+        return Object.entries(this.store)[index][0];
+      },
+    };
+  }
+};
+
+class AppStorage implements Storage {
+  store: Storage;
+
+  length: number;
+
+  constructor() {
+    this.store = getAvailableStorage();
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setItem(key: string, value: any) {
+    this.store.setItem(key, JSON.stringify(value));
+    this.length = this.store.length;
+  }
+
+  getItem(key: string) { return JSON.parse(this.store.getItem(key)); }
+
+  removeItem(key: string) {
+    this.store.removeItem(key);
+    this.length = this.store.length;
+  }
+
+  clear() {
+    this.store.clear();
+    this.length = 0;
+  }
+
+  key(index: number) { return this.store.key(index); }
+}
+
+export default new AppStorage();
